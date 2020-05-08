@@ -1,0 +1,53 @@
+﻿@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Описание продукта";
+}
+
+<h1>Описание продукта</h1>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="@Url.Content(Model.ImagePath)" alt="@Html.DisplayFor(model => model.Name)" class="img-thumbnail" style="max-height: 450px; " />
+        </div>
+        <div class="col-sm-8">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Brand)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Brand)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.UnitQuantity)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.UnitQuantity)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div>
+    @if (Context.User.Identity.IsAuthenticated)
+    {
+    <a asp-action="Edit" asp-route-id="@Model.ProductId">Редактировать</a>
+    @: | 
+    }
+
+    <a asp-action="Index">К списку продуктов</a>
+</div>
